@@ -2,9 +2,9 @@
 const titles = [
     "Construction Project Manager",
     "BIM Professional",
-    "AI & Construction Innovator",
     "LEED Green Associate",
-    "Vanderbilt M.Eng Candidate"
+    "PMP Certified Professional",
+    "Civil Engineer"
 ];
 
 let titleIndex = 0;
@@ -23,15 +23,15 @@ function type() {
         charIndex++;
     }
 
-    let speed = isDeleting ? 30 : 60;
+    let speed = isDeleting ? 35 : 65;
 
     if (!isDeleting && charIndex === current.length) {
-        speed = 2000;
+        speed = 2200;
         isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
         isDeleting = false;
         titleIndex = (titleIndex + 1) % titles.length;
-        speed = 400;
+        speed = 500;
     }
 
     setTimeout(type, speed);
@@ -51,13 +51,11 @@ const navMenu = document.getElementById('navMenu');
 
 navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('open');
-    navToggle.classList.toggle('active');
 });
 
 document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('open');
-        navToggle.classList.remove('active');
     });
 });
 
@@ -87,13 +85,11 @@ window.addEventListener('scroll', updateActiveLink);
 
 // ===== Scroll Reveal Animation =====
 function initScrollReveal() {
-    // Individual fade-in elements
     const elements = document.querySelectorAll(
         '.exp-card, .timeline-item, .stat-card, .about-text'
     );
     elements.forEach(el => el.classList.add('fade-in'));
 
-    // Stagger groups
     const staggerGroups = document.querySelectorAll('.fade-in-stagger');
 
     const observer = new IntersectionObserver((entries) => {
@@ -103,7 +99,7 @@ function initScrollReveal() {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
 
     elements.forEach(el => observer.observe(el));
     staggerGroups.forEach(el => observer.observe(el));
@@ -120,7 +116,7 @@ function animateCounters() {
             if (entry.isIntersecting) {
                 const counter = entry.target;
                 const target = parseInt(counter.getAttribute('data-target'));
-                const duration = 1500;
+                const duration = 1200;
                 const start = performance.now();
 
                 function update(now) {
@@ -146,60 +142,3 @@ function animateCounters() {
 }
 
 animateCounters();
-
-// ===== Floating Particles =====
-function createParticles() {
-    const container = document.getElementById('particles');
-    if (!container) return;
-
-    for (let i = 0; i < 25; i++) {
-        const particle = document.createElement('div');
-        const size = Math.random() * 3 + 1;
-        const delay = Math.random() * -10;
-        const duration = Math.random() * 8 + 6;
-        const startX = Math.random() * 100;
-        const startY = Math.random() * 100;
-
-        particle.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: rgba(59, 130, 246, ${Math.random() * 0.4 + 0.1});
-            border-radius: 50%;
-            left: ${startX}%;
-            top: ${startY}%;
-            animation: particleDrift ${duration}s ease-in-out ${delay}s infinite;
-        `;
-        container.appendChild(particle);
-    }
-
-    // Add a few gold particles for construction accent
-    for (let i = 0; i < 8; i++) {
-        const particle = document.createElement('div');
-        const size = Math.random() * 2 + 1;
-        particle.style.cssText = `
-            position: absolute;
-            width: ${size}px;
-            height: ${size}px;
-            background: rgba(245, 158, 11, ${Math.random() * 0.2 + 0.05});
-            border-radius: 50%;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation: particleDrift ${Math.random() * 10 + 8}s ease-in-out ${Math.random() * -8}s infinite;
-        `;
-        container.appendChild(particle);
-    }
-
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes particleDrift {
-            0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.4; }
-            25% { transform: translate(20px, -40px) scale(1.3); opacity: 0.8; }
-            50% { transform: translate(-15px, -80px) scale(0.7); opacity: 0.2; }
-            75% { transform: translate(25px, -40px) scale(1.1); opacity: 0.6; }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-createParticles();
