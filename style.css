@@ -178,6 +178,93 @@ ul { list-style: none; }
     transition: var(--transition);
 }
 
+/* ===== Section Decorative SVGs ===== */
+.section-deco {
+    position: absolute;
+    pointer-events: none;
+    color: var(--orange);
+    opacity: 0.06;
+    z-index: 0;
+}
+
+/* About section decos */
+.deco-about-crane {
+    top: 20px;
+    right: 20px;
+    width: 160px;
+    height: 240px;
+}
+.deco-about-building {
+    bottom: 0;
+    left: 10px;
+    width: 100px;
+    height: 170px;
+}
+
+/* Skills section decos */
+.deco-skills-scaffold {
+    top: 40px;
+    left: 15px;
+    width: 55px;
+    height: 220px;
+}
+.deco-skills-building {
+    bottom: 20px;
+    right: 15px;
+    width: 80px;
+    height: 200px;
+}
+
+/* Education section decos */
+.deco-edu-beam {
+    top: 30px;
+    left: 40px;
+    width: 160px;
+    height: 48px;
+}
+.deco-edu-crane {
+    bottom: 10px;
+    right: 20px;
+    width: 120px;
+    height: 200px;
+}
+
+/* Experience section decos */
+.deco-exp-crane {
+    top: 30px;
+    left: 10px;
+    width: 90px;
+    height: 320px;
+}
+.deco-exp-buildings {
+    top: 60px;
+    right: 10px;
+    width: 140px;
+    height: 280px;
+}
+
+/* Certifications section decos */
+.deco-cert-beam {
+    top: 25px;
+    left: 30px;
+    width: 200px;
+    height: 32px;
+}
+.deco-cert-scaffold {
+    top: 60px;
+    right: 20px;
+    width: 45px;
+    height: 160px;
+}
+
+/* Contact section decos */
+.deco-contact-buildings {
+    bottom: 10px;
+    left: 15px;
+    width: 280px;
+    height: 85px;
+}
+
 /* ===== Hero Section ===== */
 .hero {
     min-height: 100vh;
@@ -192,55 +279,16 @@ ul { list-style: none; }
         linear-gradient(175deg, rgba(26, 29, 35, 0.95) 0%, rgba(21, 23, 28, 0.98) 100%);
 }
 
-/* Construction skyline silhouette */
-.hero::after {
-    content: '';
+/* Hero skyline SVG */
+.hero-skyline {
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    height: 180px;
-    background:
-        /* Crane */
-        linear-gradient(to right, transparent 78%, var(--border) 78%, var(--border) 78.3%, transparent 78.3%),
-        linear-gradient(to right, transparent 73%, var(--border) 73%, var(--border) 83%, transparent 83%),
-        /* Tall building */
-        linear-gradient(to right, transparent 10%, var(--concrete) 10%, var(--concrete) 18%, transparent 18%),
-        /* Medium building */
-        linear-gradient(to right, transparent 20%, rgba(44, 47, 54, 0.7) 20%, rgba(44, 47, 54, 0.7) 30%, transparent 30%),
-        /* Short building */
-        linear-gradient(to right, transparent 35%, var(--concrete) 35%, var(--concrete) 42%, transparent 42%),
-        /* Wide building */
-        linear-gradient(to right, transparent 48%, rgba(44, 47, 54, 0.5) 48%, rgba(44, 47, 54, 0.5) 65%, transparent 65%),
-        /* Right building */
-        linear-gradient(to right, transparent 88%, var(--concrete) 88%, var(--concrete) 96%, transparent 96%);
-    background-size:
-        100% 180px,
-        100% 2px,
-        100% 160px,
-        100% 120px,
-        100% 90px,
-        100% 70px,
-        100% 140px;
-    background-position:
-        bottom,
-        bottom 140px center,
-        bottom,
-        bottom,
-        bottom,
-        bottom,
-        bottom;
-    background-repeat: no-repeat;
-    opacity: 0.3;
+    width: 100%;
+    height: 400px;
+    color: var(--orange);
+    opacity: 0.07;
     pointer-events: none;
-}
-
-.hero-construction {
-    display: none;
-}
-
-.hero-particles {
-    display: none;
 }
 
 .hero-content {
@@ -1147,8 +1195,12 @@ ul { list-style: none; }
         padding: 70px 0;
     }
 
-    .hero::after {
-        height: 100px;
+    .section-deco {
+        display: none;
+    }
+
+    .hero-skyline {
+        height: 200px;
     }
 }
 
